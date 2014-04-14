@@ -9,10 +9,13 @@ matrix:
   allow_failures:
   - python: '3.2'
   - python: '3.3'
-install: script/travis-install
+install:
+- script/travis-install
+- pip install flake8
 script:
 - pwd
 - env
+- flake8 fig
 - sekexe/run "`pwd`/script/travis $TRAVIS_PYTHON_VERSION"
 deploy:
   provider: pypi
